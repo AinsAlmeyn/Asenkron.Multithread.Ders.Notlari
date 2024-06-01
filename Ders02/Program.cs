@@ -18,7 +18,7 @@
 //            Console.WriteLine($"Main Thread {i}");
 //        }
 //    }
-
+//}
 //static void ThreadMethod()
 //{
 
@@ -100,33 +100,33 @@
 //Console.WriteLine($"Main Thread görevini tamamladı.");
 #endregion
 #region Locking
-//object locking = new();
-//int i = 1;
+object locking = new();
+int i = 1;
 
-//Thread thread1 = new(() =>
-//{
-//    lock (locking)
-//    {
-//        while (i < 10)
-//        {
-//            i++;
-//            Console.WriteLine($"Thread 1 : {i}");
-//        }
-//    }
-//});
-//Thread thread2 = new(() =>
-//{
-//    lock (locking)
-//    {
-//        while (i > 0)
-//        {
-//            i--;
-//            Console.WriteLine($"Thread 2 : {i}");
-//        }
-//    }
-//});
-//thread1.Start();
-//thread2.Start();
+Thread thread1 = new(() =>
+{
+    lock (locking)
+    {
+        while (i < 10)
+        {
+            i++;
+            Console.WriteLine($"Thread 1 : {i}");
+        }
+    }
+});
+Thread thread2 = new(() =>
+{
+    lock (locking)
+    {
+        while (i > 0)
+        {
+            i--;
+            Console.WriteLine($"Thread 2 : {i}");
+        }
+    }
+});
+thread1.Start();
+thread2.Start();
 #endregion
 #region Sleep
 //Thread thread = new(() =>
@@ -188,18 +188,18 @@
 //cancellationToken.Cancel();
 #endregion
 #region Interrupt
-Thread thread = new(() =>
-{
-    try
-    {
-        Thread.Sleep(Timeout.Infinite);
-    }
-    catch (ThreadInterruptedException ex)
-    {
+//    Thread thread = new(() =>
+//{
+//    try
+//    {
+//        Thread.Sleep(Timeout.Infinite);
+//    }
+//    catch (ThreadInterruptedException ex)
+//    {
 
-    }
-});
+//    }
+//});
 
-thread.Start();
-thread.Interrupt();
+//thread.Start();
+//thread.Interrupt();
 #endregion
